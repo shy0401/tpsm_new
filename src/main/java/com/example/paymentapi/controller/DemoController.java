@@ -254,9 +254,10 @@ public class DemoController {
     }
 
     @GetMapping("/orderlist")
-    public void orderList(Model model, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member sessionMember){
+    public String orderList(Model model, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member sessionMember){
         List<Order> orders = orderRepository.findByMember(sessionMember);
         model.addAttribute("orders", orders);
+        return "/demo/orderlist";
     }
 
     @ResponseBody
@@ -268,9 +269,10 @@ public class DemoController {
     }
 
     @GetMapping("/orderlistTotal")
-    public void orderListTotal(Model model){
+    public String orderListTotal(Model model){
         List<Order> orders = orderRepository.findAll();
         model.addAttribute("orders", orders);
+        return "/demo/orderlistTotal";
     }
 
     @PostMapping("/order/payment")
