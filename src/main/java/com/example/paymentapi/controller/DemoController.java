@@ -63,9 +63,9 @@ public class DemoController {
     }
 
     @GetMapping("/signup")
-    public String signup(Model model) {
+    public MemberFormDto signup(Model model) {
         model.addAttribute("formDto",  new MemberFormDto());
-        return "/demo/signup";
+        return new MemberFormDto();
     }
 
     @PostMapping("/signup")
